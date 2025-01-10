@@ -32,7 +32,7 @@ function nameReply(req, res) {
         },
 
         'default': () => {
-            res.status(406).send('Not Acceptable')
+            res.status(406).send('Not Acceptable') //type of data no acceptable
         }
     });
 }

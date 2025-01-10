@@ -1,5 +1,5 @@
-const express = require('express');
-const cors = require('cors');
+const express = require("express");
+const cors = require("cors");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -27,10 +27,14 @@ app.use(express.static('css'));
 
 const timeRoutes = require("./routes/time");
 const nameRoutes = require("./routes/name");
-
+const jsonRoutes = require("./routes/json");
+const echoAllRoutes = require("./routes/echo-all");
 
 app.use("/routes/time", timeRoutes);
 app.use("/routes/name", nameRoutes);
+app.use("/routes/json", jsonRoutes);
+app.use("/routes/echo-all", echoAllRoutes);
+
 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + "/views/index.html");
@@ -48,6 +52,4 @@ app.all('*', (req, res) => {
     res.send("Invalid route");
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+app.listen(PORT, () => console.log(`Listening on ${PORT}`));
